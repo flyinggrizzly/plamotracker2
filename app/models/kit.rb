@@ -31,21 +31,23 @@ class Kit < ApplicationRecord
   validates :name, presence: true
   validates :identifier,
     presence: true,
-    uniqueness: true
+    uniqueness: { message: "Kit must be unique in the scope of scale, producers, kit-lines, designers, and base-kit" }
 
   private
 
   def set_identifier
     # Order is important and needs to be stable. Change with care.
     elements = [
-      "name=[#{name}]",
-      "scale=[#{kit_scale.name}]",
-      "designers=[#{designers.pluck(:name)}]",
-      "producers=[#{producers.pluck(:name)}]",
-      "kit_lines=[#{kit_lines.pluck(:slug)}]",
-      "base_kit=[#{base_kit.identifier}]",
+      [ "name", name ],
+      [ "scale", kit_scale.name ],
+      [ "designers", designers.map(&:name) ],
+      [ "producers", producers.map(&:name) ],
+      [ "kit_lines", kit_lines.map(&:slug) ],
+      [ "base_kit", base_kit&.identifier ],
     ]
+      .reject {|_field, value| value.blank?}
+      .map {|field, value| "#{field}={#{value}}"}
 
-    self.identifier = elements.join('__')
+    self.identifier = elements.join(',')
   end
 end

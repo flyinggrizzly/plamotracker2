@@ -1,19 +1,29 @@
-%h1 Listing source_materials
+.row
+  .col
+    %h1 Source materials
+.row
+  .col
+    = link_to 'Create a new source material', new_source_material_path
+.row
+  .col
+    %table.table.table-striped.table-sm
+      %thead
+        %tr
+          %th Name
+          %th Slug
+          %th Parent source
+          %th
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+      %tbody
+        - @source_materials.each do |source_material|
+          %tr
+            %td= source_material.name
+            %td
+              %code= source_material.slug
+            %td
+              = source_material.parent_source&.name
+              %code= source_material.parent_source&.slug
+            %td= link_to 'Show', source_material, class: 'btn btn-sm btn-outline-primary'
+            %td= link_to 'Edit', edit_source_material_path(source_material), class: 'btn btn-sm btn-outline-primary'
+            %td= link_to 'Destroy', source_material, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
-  %tbody
-    - @source_materials.each do |source_material|
-      %tr
-        %td= link_to 'Show', source_material
-        %td= link_to 'Edit', edit_source_material_path(source_material)
-        %td= link_to 'Destroy', source_material, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Source material', new_source_material_path

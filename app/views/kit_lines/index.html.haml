@@ -1,0 +1,19 @@
+%h1 Listing kit_lines
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @kit_lines.each do |kit_line|
+      %tr
+        %td= link_to 'Show', kit_line
+        %td= link_to 'Edit', edit_kit_line_path(kit_line)
+        %td= link_to 'Destroy', kit_line, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Kit line', new_kit_line_path

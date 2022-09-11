@@ -1,0 +1,10 @@
+= form_for @source_material do |f|
+  - if @source_material.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@source_material.errors.count, "error")} prohibited this source_material from being saved:"
+      %ul
+        - @source_material.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,19 @@
+%h1 Listing kit_scales
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @kit_scales.each do |kit_scale|
+      %tr
+        %td= link_to 'Show', kit_scale
+        %td= link_to 'Edit', edit_kit_scale_path(kit_scale)
+        %td= link_to 'Destroy', kit_scale, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Kit scale', new_kit_scale_path

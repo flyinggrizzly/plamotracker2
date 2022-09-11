@@ -1,0 +1,19 @@
+%h1 Listing source_materials
+
+%table
+  %thead
+    %tr
+      %th
+      %th
+      %th
+
+  %tbody
+    - @source_materials.each do |source_material|
+      %tr
+        %td= link_to 'Show', source_material
+        %td= link_to 'Edit', edit_source_material_path(source_material)
+        %td= link_to 'Destroy', source_material, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Source material', new_source_material_path

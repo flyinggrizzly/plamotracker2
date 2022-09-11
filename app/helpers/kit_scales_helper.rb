@@ -1,0 +1,2 @@
+module KitScalesHelper
+end

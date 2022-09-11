@@ -1,0 +1,10 @@
+= form_for @kit_scale do |f|
+  - if @kit_scale.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@kit_scale.errors.count, "error")} prohibited this kit_scale from being saved:"
+      %ul
+        - @kit_scale.errors.full_messages.each do |message|
+          %li= message
+
+  .actions
+    = f.submit 'Save'

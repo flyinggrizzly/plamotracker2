@@ -58,13 +58,13 @@ class SourceMaterialsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_source_material
-      @source_material = SourceMaterial.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def source_material_params
-      params.fetch(:source_material, {})
-    end
+  def set_source_material
+    @source_material = SourceMaterial.find(params[:id])
+  end
+
+  def source_material_params
+    params.require(:source_material)
+      .permit(:name, :base_slug, :parent_source_id)
+  end
 end

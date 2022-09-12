@@ -4,5 +4,5 @@
 
 import { application } from "./application"
 
-import HelloController from "./hello_controller"
-application.register("hello", HelloController)
+import RailsFormInputMultiSelectController from './rails_form_input_multi_select_controller'
+application.register("multi_select", RailsFormInputMultiSelectController)

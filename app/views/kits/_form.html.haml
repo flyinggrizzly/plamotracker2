@@ -1,10 +1,51 @@
-= form_for @kit do |f|
-  - if @kit.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@kit.errors.count, "error")} prohibited this kit from being saved:"
-      %ul
-        - @kit.errors.full_messages.each do |message|
-          %li= message
+.row
+  .col
+    = bootstrap_form_for(@kit) do |f|
+      - if @kit.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@kit.errors.count, "error")} prohibited this kit from being saved:"
+          %ul
+            - @kit.errors.full_messages.each do |message|
+              %li= message
+      .row
+        .col
+          = f.text_field :name
+      .row
+        .col
+          = f.number_field :quantity
+        .col
+          = f.select :status, Kit::STATUSES.keys
+        .col
+          = f.select :kit_scale_id, KitScale.pluck(:name, :id), label: 'Scale', include_blank: true
+      .row
+        .col
+          = f.select :base_kit_id, Kit.pluck(:name, :id), include_blank: true
+        .col
+          = f.label :materials
+          - material_options = Material.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+          = render('multi_select', name: "kit[material_ids][]", collection: material_options, current_value: @kit.material_ids)
 
-  .actions
-    = f.submit 'Save'
+      .row
+        .col 
+          - producer_options = Producer.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+          = f.label :producers
+          = render('multi_select', name: "kit[producer_ids][]", collection: producer_options, current_value: @kit.producer_ids)
+
+        .col
+          - kit_line_options = KitLine.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+          = f.label :kit_lines
+          = render('multi_select', name: "kit[kit_line_ids][]", collection: kit_line_options, current_value: @kit.kit_line_ids)
+
+        .col
+          - designer_options = Designer.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+          = f.label :designers
+          = render('multi_select', name: "kit[designer_ids][]", collection: designer_options, current_value: @kit.designer_ids)
+
+      .row
+        .col
+          = f.label :source_materials
+          = render 'multi_select', name: "kit[source_material_ids][]", current_value: [], collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
+
+
+      .actions
+        = f.submit 'Save'

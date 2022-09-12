@@ -33,6 +33,27 @@ class Kit < ApplicationRecord
     presence: true,
     uniqueness: { message: "Kit must be unique in the scope of scale, producers, kit-lines, designers, and base-kit" }
 
+  delegate :name, to: :kit_scale, prefix: true
+  alias_method :scale_name, :kit_scale_name
+
+  delegate :name, to: :base_kit, prefix: true, allow_nil: true
+
+  def status_name
+    status.humanize
+  end
+
+  def material_names
+    materials.pluck(:name)
+  end
+
+  def producer_names
+    producers.pluck(:name)
+  end
+
+  def kit_line_names
+    kit_lines.pluck(:name)
+  end
+
   private
 
   def set_identifier

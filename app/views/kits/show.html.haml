@@ -1,6 +1,51 @@
-%p#notice= notice
+.row.mt-2
+  .col
+    %h1= @kit.name
+  .col
+    = link_to 'Edit', edit_kit_path(@kit), class: 'btn btn-sm btn-outline-primary'
+    = link_to 'Destroy', @kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+
+.row.mt-2
+  .col
+    %h3 Status
+    %p= @kit.status_name
+  .col
+    %h3 Quantity
+    %p= @kit.quantity
+  .col
+    %h3 Materials
+    %ul
+      - @kit.materials.each do |material|
+        %li= link_to material.name, material_path(material)
+  - if @kit.base_kit.present?
+    .col
+      %h3 Base kit
+      %p= @kit.base_kit_name
 
 
-= link_to 'Edit', edit_kit_path(@kit)
-\|
-= link_to 'Back', kits_path
+.row.mt-2
+  .col
+    %h3 Producers
+    %ul
+      - @kit.producers.each do |producer|
+        %li= link_to producer.name, producer_path(producer)
+  .col
+    %h3 Kit lines
+    %ul
+      - @kit.kit_lines.each do |kit_line|
+        %li= link_to kit_line.name, kit_line_path(kit_line)
+  .col
+    %h3 Designers
+    %ul
+      - @kit.designers.each do |designer|
+        %li= link_to designer.name, designer_path(designer)
+  .col
+    %h3 Source materials
+    %ul
+      - @kit.source_materials.each do |source_material|
+        %li
+          %a{href: source_material_path(source_material)}
+            = source_material.name
+            %code= source_material.slug
+
+

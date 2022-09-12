@@ -12,7 +12,7 @@ class KitsController < ApplicationController
 
   # GET /kits/new
   def new
-    @kit = Kit.new
+    @kit = Kit.new(materials: [Material.find_by(name: 'Plastic')])
   end
 
   # GET /kits/1/edit
@@ -58,13 +58,24 @@ class KitsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_kit
-      @kit = Kit.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def kit_params
-      params.fetch(:kit, {})
-    end
+  def set_kit
+    @kit = Kit.find(params[:id])
+  end
+
+  def kit_params
+    params.require(:kit)
+      .permit(
+        :name,
+        :status,
+        :quantity,
+        :kit_scale_id,
+        :base_kit_id,
+        material_ids: [],
+        producer_ids: [],
+        kit_line_ids: [],
+        designer_ids: [],
+        source_material_ids: [],
+      )
+  end
 end

@@ -1,19 +1,42 @@
-%h1 Listing kits
+.row
+  .col
+    %h1 Kits
+.row
+  .col
+    = link_to 'Create a new kit', new_kit_path
+.row
+  .col
+    %table.table.table-striped.table-sm
+      %thead
+        %tr
+          %th Name
+          %th Status
+          %th Quantity
+          %th Scale
+          %th Materials
+          %th Producers
+          %th Kit lines
+          %th
+          %th
+          %th
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+      %tbody
+        - @kits.each do |kit|
+          %tr
+            %td= kit.name
+            %td= kit.status
+            %td= kit.quantity
+            %td= kit.scale_name
+            %td
+              - kit.materials.each do |material|
+                = link_to material.name, material_path(material)
+            %td
+              - kit.producers.each do |producer|
+                = link_to producer.name, producer_path(producer)
+            %td
+              - kit.kit_lines.each do |kit_line|
+                = link_to kit_line.name, kit_line_path(kit_line)
+            %td= link_to 'Show', kit, class: 'btn btn-sm btn-outline-primary'
+            %td= link_to 'Edit', edit_kit_path(kit), class: 'btn btn-sm btn-outline-primary'
+            %td= link_to 'Destroy', kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
-  %tbody
-    - @kits.each do |kit|
-      %tr
-        %td= link_to 'Show', kit
-        %td= link_to 'Edit', edit_kit_path(kit)
-        %td= link_to 'Destroy', kit, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Kit', new_kit_path

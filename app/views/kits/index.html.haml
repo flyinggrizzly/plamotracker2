@@ -18,13 +18,13 @@
           %th Kit lines
           %th
           %th
-          %th
 
       %tbody
         - @kits.each do |kit|
           %tr
-            %td= kit.name
-            %td= kit.status
+            %td
+              = link_to kit.name, kit_path(kit)
+            %td= kit.status_name
             %td= kit.quantity
             %td= kit.scale_name
             %td
@@ -36,7 +36,6 @@
             %td
               - kit.kit_lines.each do |kit_line|
                 = link_to kit_line.name, kit_line_path(kit_line)
-            %td= link_to 'Show', kit, class: 'btn btn-sm btn-outline-primary'
             %td= link_to 'Edit', edit_kit_path(kit), class: 'btn btn-sm btn-outline-primary'
-            %td= link_to 'Destroy', kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+            %td= button_to 'Destroy', kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 

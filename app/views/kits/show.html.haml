@@ -3,7 +3,7 @@
     %h1= @kit.name
   .col
     = link_to 'Edit', edit_kit_path(@kit), class: 'btn btn-sm btn-outline-primary'
-    = link_to 'Destroy', @kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+    = button_to 'Destroy', @kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
 .row.mt-2
   .col

@@ -16,15 +16,9 @@ class Kit < ApplicationRecord
     foreign_key: 'base_kit_id',
     inverse_of: 'base_kit'
 
-  STATUSES = {
-    NEEDED: 0,
-    DESIRED: 1,
-    OWNED: 100, # default
-    BUILT: 200,
-    PARTED_OUT: 250,
-    SOLD: 300,
-  }
-  enum :status, STATUSES
+  has_many :kit_instances, dependent: :nullify
+
+  STATUSES = KitInstance::STATUSES
 
   before_validation :set_identifier
 
@@ -38,10 +32,6 @@ class Kit < ApplicationRecord
 
   delegate :name, to: :base_kit, prefix: true, allow_nil: true
 
-  def status_name
-    status.humanize
-  end
-
   def material_names
     materials.pluck(:name)
   end
@@ -52,6 +42,10 @@ class Kit < ApplicationRecord
 
   def kit_line_names
     kit_lines.pluck(:name)
+  end
+
+  def quantity
+    kit_instances.count
   end
 
   private

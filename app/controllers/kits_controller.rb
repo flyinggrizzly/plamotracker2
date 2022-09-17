@@ -25,7 +25,7 @@ class KitsController < ApplicationController
 
     respond_to do |format|
       if @kit.save
-        format.html { redirect_to kit_url(@kit), notice: "Kit was successfully created." }
+        format.html { redirect_to kits_url, notice: "Kit was successfully created." }
         format.json { render :show, status: :created, location: @kit }
       else
         format.html { render :new, status: :unprocessable_entity }

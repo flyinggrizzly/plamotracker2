@@ -10,7 +10,6 @@
       %thead
         %tr
           %th Name
-          %th Status
           %th Quantity
           %th Scale
           %th Materials
@@ -24,7 +23,6 @@
           %tr
             %td
               = link_to kit.name, kit_path(kit)
-            %td= kit.status_name
             %td= kit.quantity
             %td= kit.scale_name
             %td

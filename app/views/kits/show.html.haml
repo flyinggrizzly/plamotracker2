@@ -1,29 +1,11 @@
 .row.mt-2
-  .col
+  .col.col-md-10
     %h1= @kit.name
   .col
-    = link_to 'Edit', edit_kit_path(@kit), class: 'btn btn-sm btn-outline-primary'
-    = button_to 'Destroy', @kit, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+    = link_to 'Edit', edit_kit_path(@kit), class: 'btn btn-sm btn-outline-primary mb-1 float-start'
+    = button_to 'Destroy', @kit, class: 'btn btn-sm btn-outline-danger float-end', method: :delete, data: { confirm: 'Are you sure?' }
 
-.row.mt-2
-  .col
-    %h3 Status
-    %p= @kit.status_name
-  .col
-    %h3 Quantity
-    %p= @kit.quantity
-  .col
-    %h3 Materials
-    %ul
-      - @kit.materials.each do |material|
-        %li= link_to material.name, material_path(material)
-  - if @kit.base_kit.present?
-    .col
-      %h3 Base kit
-      %p= @kit.base_kit_name
-
-
-.row.mt-2
+.row.mt-4
   .col
     %h3 Producers
     %ul
@@ -48,4 +30,46 @@
             = source_material.name
             %code= source_material.slug
 
+.row.mt-4
+  .col
+    %h3 Quantity
+    %p= @kit.quantity
+  .col
+    %h3 Materials
+    %ul
+      - @kit.materials.each do |material|
+        %li= link_to material.name, material_path(material)
+  - if @kit.base_kit.present?
+    .col
+      %h3 Base kit
+      %p= @kit.base_kit_name
+
+.row.mt-2
+  .col
+    %h3 Copies of this kit
+    .row
+      - @kit.kit_instances.persisted.each do |ki|
+        .col.col-md-4.mt-1
+          .border.border-2.rounded.mx-1.p-2
+            = bootstrap_form_for(ki) do |f|
+              = f.select :status, KitInstance::STATUSES.keys
+              = f.text_area :notes
+              = f.submit 'Update', class: 'btn btn-outline-primary btn-sm float-start'
+            = button_to 'Destroy', ki, class: 'btn btn-sm btn-outline-danger float-end', method: :delete, data: { confirm: 'Are you sure?' }
+            .clearfix
+
+.row.mt-4
+  .col
+    %h3 Add another copy of this kit
+    = bootstrap_form_for(@kit_instance) do |f|
+      - if @kit_instance.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@kit_instance.errors.count, "error")} prohibited this kit_instance from being saved:"
+          %ul
+            - @kit_instance.errors.full_messages.each do |message|
+              %li= message
+      = f.hidden_field :kit_id
+      = f.select :status, KitInstance::STATUSES.keys
+      = f.text_area :notes
+      = f.submit 'Save copy', class: 'btn btn-outline-primary'
 

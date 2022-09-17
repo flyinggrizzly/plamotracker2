@@ -12,11 +12,7 @@
           = f.text_field :name
       .row
         .col
-          = f.number_field :quantity
-        .col
-          = f.select :status, Kit::STATUSES.keys
-        .col
-          = f.select :kit_scale_id, KitScale.pluck(:name, :id), label: 'Scale', include_blank: true
+          = f.select :kit_scale_id, KitScale.increasing.pluck(:name, :id), label: 'Scale', include_blank: true
       .row
         .col
           = f.select :base_kit_id, Kit.pluck(:name, :id), include_blank: true
@@ -46,6 +42,12 @@
           = f.label :source_materials
           = render 'multi_select', name: "kit[source_material_ids][]", current_value: [], collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
 
+      .row
+        .col
+          %h3 Boxes of this kit
+          = f.fields_for :kit_instances do |ki_f|
+            = ki_f.select :status, KitInstance::STATUSES.keys
+            = ki_f.text_area :notes
 
       .actions
         = f.submit 'Save'

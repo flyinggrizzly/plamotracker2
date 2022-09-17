@@ -8,11 +8,12 @@ class KitsController < ApplicationController
 
   # GET /kits/1 or /kits/1.json
   def show
+    @kit_instance = @kit.kit_instances.build(kit: @kit)
   end
 
   # GET /kits/new
   def new
-    @kit = Kit.new(materials: [Material.find_by(name: 'Plastic')])
+    @kit = Kit.new(materials: [Material.find_by(name: 'Plastic')]).tap {|kit| kit.kit_instances.build }
   end
 
   # GET /kits/1/edit
@@ -76,6 +77,10 @@ class KitsController < ApplicationController
         kit_line_ids: [],
         designer_ids: [],
         source_material_ids: [],
+        kit_instances_attributes: [
+          :status,
+          :notes,
+        ],
       )
   end
 end

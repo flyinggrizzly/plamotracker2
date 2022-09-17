@@ -17,6 +17,7 @@ class Kit < ApplicationRecord
     inverse_of: 'base_kit'
 
   has_many :kit_instances, dependent: :nullify
+  accepts_nested_attributes_for :kit_instances
 
   STATUSES = KitInstance::STATUSES
 

@@ -58,13 +58,12 @@ class DesignersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_designer
-      @designer = Designer.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def designer_params
-      params.fetch(:designer, {})
-    end
+  def set_designer
+    @designer = Designer.find(params[:id])
+  end
+
+  def designer_params
+    params.require(:designer).permit(:name)
+  end
 end

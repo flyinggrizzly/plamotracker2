@@ -1,19 +1,22 @@
-%h1 Listing designers
+.row
+  .col
+    %h1 Designers
+.row
+  .col
+    = link_to 'Create a new designer', new_designer_path
+.row
+  .col
+    %table.table.table-striped.table-sm
+      %thead
+        %tr
+          %th Name
+          %th
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+      %tbody
+        - @designers.each do |designer|
+          %tr
+            %td= designer.name
+            %td= link_to 'Show', designer, class: 'btn btn-sm btn-outline-primary'
+            %td= link_to 'Edit', edit_designer_path(designer), class: 'btn btn-sm btn-outline-primary'
+            %td= button_to 'Destroy', designer, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 
-  %tbody
-    - @designers.each do |designer|
-      %tr
-        %td= link_to 'Show', designer
-        %td= link_to 'Edit', edit_designer_path(designer)
-        %td= link_to 'Destroy', designer, method: :delete, data: { confirm: 'Are you sure?' }
-
-%br
-
-= link_to 'New Designer', new_designer_path

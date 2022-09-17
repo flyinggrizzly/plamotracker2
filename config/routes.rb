@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :kit_instances, only: [ :create, :update, :destroy ]
   resources :materials
   resources :kits
   resources :source_materials

@@ -25,5 +25,5 @@
               %code= source_material.parent_source&.slug
             %td= link_to 'Show', source_material, class: 'btn btn-sm btn-outline-primary'
             %td= link_to 'Edit', edit_source_material_path(source_material), class: 'btn btn-sm btn-outline-primary'
-            %td= link_to 'Destroy', source_material, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
+            %td= button_to 'Destroy', source_material, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' }
 

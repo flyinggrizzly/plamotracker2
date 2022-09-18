@@ -31,6 +31,7 @@ module FactTable
       { name: "B-Club",                         nickname: "B-Club",          slug: "b_club",     producer_name: "Bandai"},
       { name: "Moderoid",                       nickname: "Moderoid",        slug: "moderoid",   producer_name: "Good Smile Company" },
       { name: "Plamax",                         nickname: "Plamax",          slug: "plamax",     producer_name: "MAX Factory" },
+      { name: "High Grade Iron Blood Orphans",  nickname: "HGIBO",           slug: "hgibo",      producer_name: "Bandai" },
     ].freeze
 
     def build(producers = Producers.build)

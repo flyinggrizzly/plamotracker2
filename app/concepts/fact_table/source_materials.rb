@@ -67,6 +67,8 @@ module FactTable
       { name: "Escaflowne",                       base_slug: "escaflowne",              parent_source_slug: nil },
       { name: "Battle Field Record UC 0081",      base_slug: "battlefield_record_0081", parent_source_slug: "gundam" },
       { name: "Gimm and Ball's World Challenged", base_slug: "gimm_ball",               parent_source_slug: "gundam/build_divers" },
+      { name: "Historical",                       base_slug: "historical",              parent_source_slug: nil },
+      { name: "World War II",                     base_slug: "ww2",                     parent_source_slug: "historical" },
     ].freeze
 
     def build

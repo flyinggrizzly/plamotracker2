@@ -28,6 +28,7 @@ module FactTable
       "Kobayashi Makoto",
       "Nagano Mamoru",
       "NAOKI",
+      "Kondo Kazuhisa",
     ]
 
     def build

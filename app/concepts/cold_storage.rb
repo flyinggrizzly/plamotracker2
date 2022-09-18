@@ -24,4 +24,8 @@ module ColdStorage
   def thaw
     data = Fs.read_latest('kits')
   end
+
+  def prune(number_to_keep)
+    Fs.prune(number_to_keep)
+  end
 end

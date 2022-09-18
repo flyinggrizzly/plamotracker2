@@ -16,6 +16,25 @@ module ColdStorage
       JSON.load_file(latest_file(name))
     end
 
+    def prune(number_to_keep)
+      folders = serialized_data_repository_path.children
+      frozen_entries = folders.flat_map {|folder| folder.children.map {|child| [ folder, child ]}}
+
+      sorted_entries = frozen_entries.sort_by(&:second).reverse
+
+      entries_to_keep = sorted_entries.slice(0, number_to_keep)
+      entries_to_delete = sorted_entries - entries_to_keep
+
+      entries_to_delete.each {|parent, e| File.delete(e)}
+      entries_to_delete.map(&:first).uniq.each {|e|
+        next if e.children.any?
+
+        Dir.delete(e)
+      }
+
+      [ entries_to_delete.size, entries_to_keep.size ]
+    end
+
     private
 
     def todays_folder

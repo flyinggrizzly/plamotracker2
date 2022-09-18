@@ -4,15 +4,17 @@ module FactTable
     extend(Table)
 
     DATA = [
-      {:name=>"1/20", :nickname=>nil, :denominator=>20},
-      {:name=>"1/32", :nickname=>nil, :denominator=>32},
-      {:name=>"1/35", :nickname=>nil, :denominator=>35},
-      {:name=>"1/48", :nickname=>nil, :denominator=>48},
-      {:name=>"1/60", :nickname=>nil, :denominator=>60},
-      {:name=>"1/72", :nickname=>nil, :denominator=>72},
-      {:name=>"1/100", :nickname=>nil, :denominator=>100},
-      {:name=>"1/144", :nickname=>nil, :denominator=>144},
-      {:name=>"1/220", :nickname=>nil, :denominator=>220}
+      { name: "1/20",           nickname: nil,  denominator: 20 },
+      { name: "1/32",           nickname: nil,  denominator: 32 },
+      { name: "1/35",           nickname: nil,  denominator: 35 },
+      { name: "1/48",           nickname: nil,  denominator: 48 },
+      { name: "1/60",           nickname: nil,  denominator: 60 },
+      { name: "1/72",           nickname: nil,  denominator: 72 },
+      { name: "1/100",          nickname: nil,  denominator: 100 },
+      { name: "1/144",          nickname: nil,  denominator: 144 },
+      { name: "1/220",          nickname: nil,  denominator: 220 },
+      { name: "Non-scale",      nickname: nil,  denominator: nil },
+      { name: "Super Deformed", nickname: "SD", denominator: nil }
     ]
 
     def build

@@ -53,6 +53,6 @@ class KitInstancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def kit_instance_params
-      params.require(:kit_instance).permit(:kit_id, :status)
+      params.require(:kit_instance).permit(:kit_id, :status, :notes)
     end
 end

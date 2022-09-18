@@ -10,12 +10,15 @@
       .row
         .col
           = f.text_field :name
+        .col
+          - kit_scale_options = KitScale.increasing.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+          = f.label :kit_scale
+          = render('select', name: "kit[kit_scale_id]", current_value: @kit.kit_scale_id, collection: kit_scale_options)
       .row
         .col
-          = f.select :kit_scale_id, KitScale.increasing.pluck(:name, :id), label: 'Scale', include_blank: true
-      .row
-        .col
-          = f.select :base_kit_id, Kit.pluck(:name, :id), include_blank: true
+          - base_kit_options = Kit.pluck(:id, :identifier).map {|id, identifier| { value: id, label: identifier }}
+          = f.label :base_kit
+          = render('select', name: "kit[base_kit_id]", current_value: @kit.base_kit_id, collection: base_kit_options)
         .col
           = f.label :materials
           - material_options = Material.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}

@@ -7,6 +7,7 @@ class KitInstance < ApplicationRecord
     OWNED: 100, # default
     BUILT: 200,
     PARTED_OUT: 250,
+    FOR_SALE: 301,
     SOLD: 300,
   }
   enum :status, STATUSES

@@ -30,6 +30,7 @@ module FactTable
       "e2046 Recast",
       "Good Smile Company",
       "MAX Factory",
+      "Plum",
     ]
 
     def build

@@ -25,6 +25,7 @@ module FactTable
       "Syd Mead",
       "Zoukei Mura",
       "Fujita Kazumi",
+      "Kobayashi Makoto",
     ]
 
     def build

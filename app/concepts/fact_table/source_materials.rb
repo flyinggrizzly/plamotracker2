@@ -61,8 +61,10 @@ module FactTable
       { name: "mechatrowego",                     base_slug: "mechatrowego",       parent_source_slug: nil },
       { name: "Evangelion",                       base_slug: "evangelion",         parent_source_slug: nil },
       { name: "Armor Trooper Votoms",             base_slug: "votoms",             parent_source_slug: nil },
-      { name: "Abakan",                           base_slug: "abakan",             parent_source_slug: nil}
+      { name: "Abakan",                           base_slug: "abakan",             parent_source_slug: nil},
       { name: "We Are Federation Hooligans!",     base_slug: "hooligans",          parent_source_slug: "gundam" },
+      { name: "Gundam Thunderbolt",               base_slug: "thunderbolt",        parent_source_slug: "gundam" },
+      { name: "Escaflowne",                       base_slug: "escaflowne",         parent_source_slug: nil },
     ].freeze
 
     def build

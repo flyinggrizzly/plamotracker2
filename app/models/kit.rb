@@ -21,6 +21,9 @@ class Kit < ApplicationRecord
 
   STATUSES = KitInstance::STATUSES
 
+  # Virtual attr to simplify logic of creating or not creating instances in creation form
+  attr_accessor :persist_box
+
   before_validation :set_identifier
 
   validates :name, presence: true

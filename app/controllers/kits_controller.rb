@@ -13,11 +13,13 @@ class KitsController < ApplicationController
 
   # GET /kits/new
   def new
+    @create_boxes = true
     @kit = Kit.new(materials: [Material.find_by(name: 'Plastic')]).tap {|kit| kit.kit_instances.build }
   end
 
   # GET /kits/1/edit
   def edit
+    @create_boxes = false
   end
 
   # POST /kits or /kits.json
@@ -65,13 +67,14 @@ class KitsController < ApplicationController
   end
 
   def kit_params
-    params.require(:kit)
+    submitted = params.require(:kit)
       .permit(
         :name,
         :status,
         :quantity,
         :kit_scale_id,
         :base_kit_id,
+        :persist_box,
         material_ids: [],
         producer_ids: [],
         kit_line_ids: [],
@@ -82,5 +85,12 @@ class KitsController < ApplicationController
           :notes,
         ],
       )
+
+    # Supported by Kit#persist_box virtual attr
+    persist_box = ActiveModel::Type::Boolean.new.cast(submitted.delete(:persist_box))
+
+    return submitted if persist_box
+
+    submitted.reject {|key, value| key == "kit_instances_attributes"}
   end
 end

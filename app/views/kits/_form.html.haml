@@ -42,12 +42,17 @@
           = f.label :source_materials
           = render 'multi_select', name: "kit[source_material_ids][]", current_value: [], collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
 
-      .row
-        .col
-          %h3 Boxes of this kit
-          = f.fields_for :kit_instances do |ki_f|
-            = ki_f.select :status, KitInstance::STATUSES.keys
-            = ki_f.text_area :notes
+      - if @create_boxes
+        .row.mt-2
+          .col
+            %h3 Boxes of this kit
+            = f.check_box :persist_box, switch: true, label: 'Create a copy of this kit your backlog?', checked: true
+            .border.rounded.p-2
+              = f.fields_for :kit_instances do |ki_f|
+                = ki_f.select :status, KitInstance::STATUSES.keys, selected: "OWNED"
+                = ki_f.text_area :notes
 
-      .actions
-        = f.submit 'Save'
+      .row.mt-2
+        .col
+          .actions
+            = f.submit 'Save'

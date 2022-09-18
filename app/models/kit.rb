@@ -25,11 +25,13 @@ class Kit < ApplicationRecord
   attr_accessor :persist_box
 
   before_validation :set_identifier
+  before_validation :set_handle
 
   validates :name, presence: true
   validates :identifier,
     presence: true,
     uniqueness: { message: "Kit must be unique in the scope of scale, producers, kit-lines, designers, and base-kit" }
+  validates :handle, presence: true
 
   delegate :name, to: :kit_scale, prefix: true
   alias_method :scale_name, :kit_scale_name
@@ -68,5 +70,17 @@ class Kit < ApplicationRecord
       .map {|field, value| "#{field}={#{value}}"}
 
     self.identifier = elements.join(',')
+  end
+
+  def set_handle
+    elements = [
+      name,
+      kit_scale.name,
+      kit_lines.map(&:nickname).then {|arr| arr.empty? ? nil : "[#{arr.join(', ')}]"},
+      producers.pluck(:name).then {|arr| arr.empty? ? nil : "[#{arr.join(', ')}]"},
+    ]
+      .reject(&:blank?)
+
+    self.handle = elements.join(' ')
   end
 end

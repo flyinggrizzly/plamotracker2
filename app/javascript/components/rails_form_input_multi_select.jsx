@@ -27,7 +27,7 @@ export const RailsFormInputMultiSelect = ({
         value={ selectValue }
         onChange={ updateValues }
         options={ options }
-        isMulti={ multiple }
+        isMulti={ JSON.parse(multiple) }
         closeMenuOnSelect={ false }
       />
     </>

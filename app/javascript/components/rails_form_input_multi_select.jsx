@@ -16,7 +16,11 @@ export const RailsFormInputMultiSelect = ({
 
   return (
     <>
-      <input type="hidden" name={ name } value={ values.join(',') } readOnly />
+      {
+        values.map((v, index) => (
+          <input type="hidden" key={ index } name={ name } value={ v } readOnly />
+        ))
+      }
       <Select
         value={ selectValue }
         onChange={ updateValues }

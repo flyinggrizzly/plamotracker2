@@ -13,12 +13,12 @@
         .col
           - kit_scale_options = KitScale.increasing.pluck(:id, :name).map {|id, name| { value: id, label: name }}
           = f.label :kit_scale
-          = render('select', name: "kit[kit_scale_id]", current_value: @kit.kit_scale_id, collection: kit_scale_options)
+          = render('multi_select', name: "kit[kit_scale_id]", current_value: @kit.kit_scale_id, collection: kit_scale_options)
       .row
         .col
-          - base_kit_options = Kit.pluck(:id, :identifier).map {|id, identifier| { value: id, label: identifier }}
-          = f.label :base_kit
-          = render('select', name: "kit[base_kit_id]", current_value: @kit.base_kit_id, collection: base_kit_options)
+          - related_kit_options = Kit.pluck(:id, :handle).map {|id, handle| { value: id, label: handle }}
+          = f.label :related_kits
+          = render('multi_select', name: "kit[related_kit_ids][]", current_value: @kit.kit_link_ids, collection: related_kit_options)
         .col
           = f.label :materials
           - material_options = Material.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
@@ -62,4 +62,4 @@
       .row.mt-2
         .col
           .actions
-            = f.submit 'Save'
+            = f.submit 'Save', render_as_button: true

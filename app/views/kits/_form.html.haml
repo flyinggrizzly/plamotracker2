@@ -42,6 +42,10 @@
           = f.label :source_materials
           = render 'multi_select', name: "kit[source_material_ids][]", current_value: [], collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
 
+      .row
+        .col
+          = f.text_area :notes
+
       - if @create_boxes
         .row.mt-2
           .col

@@ -28,6 +28,8 @@ module FactTable
       "Volks",
       "Wave",
       "e2046 Recast",
+      "Good Smile Company",
+      "MAX Factory",
     ]
 
     def build

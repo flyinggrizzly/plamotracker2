@@ -24,6 +24,7 @@ module FactTable
       "Studio Reckless",
       "Syd Mead",
       "Zoukei Mura",
+      "Fujita Kazumi",
     ]
 
     def build

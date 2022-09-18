@@ -8,6 +8,8 @@ module ColdStorage
       path = todays_folder.join("#{name}__#{DateTime.current.iso8601}.json")
 
       File.write(path, JSON.pretty_generate(data))
+
+      path
     end
 
     def read_latest(name)

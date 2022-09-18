@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_17_104453) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_18_174722) do
   create_table "designers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -34,7 +34,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_104453) do
 
   create_table "kit_lines", force: :cascade do |t|
     t.string "name", null: false
-    t.string "nickname"
+    t.string "nickname", null: false
     t.string "slug", null: false
     t.integer "producer_id", null: false
     t.datetime "created_at", null: false
@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_17_104453) do
     t.integer "base_kit_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "handle", null: false
     t.index ["base_kit_id"], name: "index_kits_on_base_kit_id"
     t.index ["identifier"], name: "index_kits_on_identifier", unique: true
   end

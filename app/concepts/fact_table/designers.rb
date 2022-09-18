@@ -29,6 +29,9 @@ module FactTable
       "Nagano Mamoru",
       "NAOKI",
       "Kondo Kazuhisa",
+      "Shinkawa Yoji",
+      "Gyoubu Ippei",
+      "Nillson Work",
     ]
 
     def build

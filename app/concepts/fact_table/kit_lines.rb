@@ -34,6 +34,10 @@ module FactTable
       { name: "High Grade Iron Blood Orphans",  nickname: "HGIBO",           slug: "hgibo",      producer_name: "Bandai" },
       { name: "High Grade Gundam the Origin",   nickname: "HGGTO",           slug: "hggto",      producer_name: "Bandai" },
       { name: "Gundam Base Limited",            nickname: "GBLim",           slug: "gblim",      producer_name: "Bandai" },
+      { name: "Haropla",                        nickname: "Haropla",         slug: "haro",       producer_name: "Bandai" },
+      { name: "Solid Art Version",              nickname: "Volks SAV",       slug: "sav",        producer_name: "Volks" },
+      { name: "Frame Arms",                     nickname: "Frame Arms",      slug: "frame_arms", producer_name: "Kotobukiya" },
+      { name: "High Grade 00",                  nickname: "HG00",            slug: "hg00",       producer_name: "Bandai" },
     ].freeze
 
     def build(producers = Producers.build)

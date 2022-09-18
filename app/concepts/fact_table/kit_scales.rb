@@ -5,6 +5,7 @@ module FactTable
 
     DATA = [
       { name: "1/20",           nickname: nil,  denominator: 20 },
+      { name: "1/24",           nickname: nil,  denominator: 24 },
       { name: "1/32",           nickname: nil,  denominator: 32 },
       { name: "1/35",           nickname: nil,  denominator: 35 },
       { name: "1/48",           nickname: nil,  denominator: 48 },

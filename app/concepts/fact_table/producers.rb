@@ -32,6 +32,8 @@ module FactTable
       "MAX Factory",
       "Plum",
       "Dengeki Hobby",
+      "Xiao Zhe - The Air Studio",
+      "Nillson Work",
     ]
 
     def build

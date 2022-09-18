@@ -34,6 +34,8 @@ module FactTable
       { name: "Gundam Wing: Endless Waltz",       base_slug: "ew",                      parent_source_slug: "gundam/wing" },
       { name: "Advance of Zeta",                  base_slug: "advance_of_zeta",         parent_source_slug: "gundam" },
       { name: "Seed: Destiny",                    base_slug: "seed_destiny",            parent_source_slug: "gundam" },
+      { name: "Seed",                             base_slug: "seed",                    parent_source_slug: "gundam" },
+      { name: "Astray",                           base_slug: "astray",                  parent_source_slug: "gundam/seed" },
       { name: "00",                               base_slug: "00",                      parent_source_slug: "gundam" },
       { name: "Crossbone",                        base_slug: "crossbone",               parent_source_slug: "gundam" },
       { name: "Evolve",                           base_slug: "evolve",                  parent_source_slug: "gundam" },
@@ -71,6 +73,11 @@ module FactTable
       { name: "World War II",                     base_slug: "ww2",                     parent_source_slug: "historical" },
       { name: "00V (00 Variations)",              base_slug: "00v",                     parent_source_slug: "gundam/00" },
       { name: "Silhouette Formula F91",           base_slug: "sf91",                    parent_source_slug: "gundam/f91" },
+      { name: "Mobile Suit Discovery",            base_slug: "msd",                     parent_source_slug: "gundam/origin" },
+      { name: "Blue Destiny",                     base_slug: "blue_destiny",            parent_source_slug: "gundam" },
+      { name: "Blue Destiny 2015",                base_slug: "bd_2015",                 parent_source_slug: "gundam/blue_destiny" },
+      { name: "Rogue One",                        base_slug: "rogue_one",               parent_source_slug: "star_wars" },
+      { name: "UC MSV",                           base_slug: "msv",                     parent_source_slug: "gundam/uc" },
     ].freeze
 
     def build

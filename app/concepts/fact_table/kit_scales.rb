@@ -10,6 +10,7 @@ module FactTable
       { name: "1/48",           nickname: nil,  denominator: 48 },
       { name: "1/60",           nickname: nil,  denominator: 60 },
       { name: "1/72",           nickname: nil,  denominator: 72 },
+      { name: "1/90",           nickname: nil,  denominator: 90 },
       { name: "1/100",          nickname: nil,  denominator: 100 },
       { name: "1/144",          nickname: nil,  denominator: 144 },
       { name: "1/220",          nickname: nil,  denominator: 220 },

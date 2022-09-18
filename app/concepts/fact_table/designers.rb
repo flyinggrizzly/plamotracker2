@@ -26,6 +26,8 @@ module FactTable
       "Zoukei Mura",
       "Fujita Kazumi",
       "Kobayashi Makoto",
+      "Nagano Mamoru",
+      "NAOKI",
     ]
 
     def build

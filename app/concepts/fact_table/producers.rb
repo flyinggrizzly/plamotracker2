@@ -31,6 +31,7 @@ module FactTable
       "Good Smile Company",
       "MAX Factory",
       "Plum",
+      "Dengeki Hobby",
     ]
 
     def build

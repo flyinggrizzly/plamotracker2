@@ -7,7 +7,7 @@ import { RailsFormInputMultiSelect } from 'components/rails_form_input_multi_sel
 
 export default class RailsFormInputMultiSelectController extends Controller {
   connect() {
-    const { name, collection, currentValue } = this.element.dataset
+    const { name, collection, currentValue, multiple } = this.element.dataset
 
     import('components/rails_form_input_multi_select').then(module => {
       const RailsFormInputMultiSelect = module.RailsFormInputMultiSelect
@@ -19,6 +19,7 @@ export default class RailsFormInputMultiSelectController extends Controller {
           name={ name }
           collection={ collection }
           currentValue={ currentValue }
+          multiple={ multiple ?? true }
         />
       )
     })

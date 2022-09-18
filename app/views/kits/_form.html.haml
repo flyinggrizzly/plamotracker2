@@ -40,7 +40,7 @@
       .row
         .col
           = f.label :source_materials
-          = render 'multi_select', name: "kit[source_material_ids][]", current_value: [], collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
+          = render 'multi_select', name: "kit[source_material_ids][]", current_value: @kit.source_material_ids, collection: SourceMaterial.all.pluck(:id, :name, :slug).map {|id, name, slug| { value: id, label: "#{name} (#{slug})" }}
 
       .row
         .col

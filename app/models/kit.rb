@@ -74,7 +74,7 @@ class Kit < ApplicationRecord
       [ "designers", designers.map(&:name) ],
       [ "producers", producers.map(&:name) ],
       [ "kit_lines", kit_lines.map(&:slug) ],
-      [ "base_kit", base_kit&.identifier ],
+      [ "related_kits", kit_links.map(&:identifier) ],
     ]
       .reject {|_field, value| value.blank?}
       .map {|field, value| "#{field}={#{value}}"}

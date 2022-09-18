@@ -4,6 +4,16 @@ class Kit < ApplicationRecord
   has_and_belongs_to_many :materials
   has_and_belongs_to_many :producers
   has_and_belongs_to_many :source_materials
+  has_and_belongs_to_many :kit_links,
+    class_name: "Kit",
+    join_table: "kit_links",
+    foreign_key: "kit_linked_from_id",
+    association_foreign_key: "kit_linked_to_id"
+  has_and_belongs_to_many :kit_back_links,
+    class_name: "Kit",
+    join_table: "kit_links",
+    foreign_key: "kit_linked_to_id",
+    association_foreign_key: "kit_linked_from_id"
 
   belongs_to :kit_scale
 

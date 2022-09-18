@@ -32,6 +32,8 @@ module FactTable
       { name: "Moderoid",                       nickname: "Moderoid",        slug: "moderoid",   producer_name: "Good Smile Company" },
       { name: "Plamax",                         nickname: "Plamax",          slug: "plamax",     producer_name: "MAX Factory" },
       { name: "High Grade Iron Blood Orphans",  nickname: "HGIBO",           slug: "hgibo",      producer_name: "Bandai" },
+      { name: "High Grade Gundam the Origin",   nickname: "HGGTO",           slug: "hggto",      producer_name: "Bandai" },
+      { name: "Gundam Base Limited",            nickname: "GBLim",           slug: "gblim",      producer_name: "Bandai" },
     ].freeze
 
     def build(producers = Producers.build)

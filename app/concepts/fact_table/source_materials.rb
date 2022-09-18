@@ -69,6 +69,8 @@ module FactTable
       { name: "Gimm and Ball's World Challenged", base_slug: "gimm_ball",               parent_source_slug: "gundam/build_divers" },
       { name: "Historical",                       base_slug: "historical",              parent_source_slug: nil },
       { name: "World War II",                     base_slug: "ww2",                     parent_source_slug: "historical" },
+      { name: "00V (00 Variations)",              base_slug: "00v",                     parent_source_slug: "gundam/00" },
+      { name: "Silhouette Formula F91",           base_slug: "sf91",                    parent_source_slug: "gundam/f91" },
     ].freeze
 
     def build

@@ -14,6 +14,12 @@ An app for tracking plastic models.
     - `bin/rails server`
     - Usually `http://localhost:3000`
 
+There are a couple Rake tasks to make this a little easier:
+
+- `bin/rails up` migrates the DB, thaws data, and runs `bin/dev`
+- `bin/rails up:scratch` installs deps, creates the DB, thaws data, and runs `bin/dev`
+- `bin/rails up:scratch:reset` drops an existing DB and then runs `up:scratch`
+
 ## Usage
 
 Once you seed the database, it's time to start adding kits. Fire up the app, then navigate to `localhost:3000/kits`, and

@@ -73,7 +73,6 @@ class KitsController < ApplicationController
         :status,
         :quantity,
         :kit_scale_id,
-        :base_kit_id,
         :persist_box,
         material_ids: [],
         producer_ids: [],

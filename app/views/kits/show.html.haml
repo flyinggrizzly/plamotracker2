@@ -39,10 +39,6 @@
     %ul
       - @kit.materials.each do |material|
         %li= link_to material.name, material_path(material)
-  - if @kit.base_kit.present?
-    .col
-      %h3 Base kit
-      %p= @kit.base_kit_name
 
 .row.mt-2
   .col

@@ -17,15 +17,6 @@ class Kit < ApplicationRecord
 
   belongs_to :kit_scale
 
-  belongs_to :base_kit,
-    class_name: 'Kit',
-    foreign_key: 'base_kit_id',
-    optional: true
-  has_many :derived_kits,
-    class_name: 'Kit',
-    foreign_key: 'base_kit_id',
-    inverse_of: 'base_kit'
-
   has_many :kit_instances, dependent: :destroy
   accepts_nested_attributes_for :kit_instances
 
@@ -42,8 +33,6 @@ class Kit < ApplicationRecord
 
   delegate :name, to: :kit_scale, prefix: true
   alias_method :scale_name, :kit_scale_name
-
-  delegate :name, to: :base_kit, prefix: true, allow_nil: true
 
   def material_names
     materials.pluck(:name)

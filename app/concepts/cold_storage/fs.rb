@@ -13,7 +13,7 @@ module ColdStorage
     end
 
     def read_latest(name)
-      JSON.load_file(latest_file(name))
+      JSON.load_file(latest_file(name)).map(&:deep_symbolize_keys)
     end
 
     def prune(number_to_keep)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_19_144808) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_145211) do
   create_table "designers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -70,7 +70,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_144808) do
 
   create_table "kits", force: :cascade do |t|
     t.string "name", null: false
-    t.string "identifier", null: false
     t.integer "kit_scale_id", default: -1, null: false
     t.text "notes"
     t.integer "base_kit_id"
@@ -80,7 +79,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_144808) do
     t.string "guid", null: false
     t.index ["base_kit_id"], name: "index_kits_on_base_kit_id"
     t.index ["guid"], name: "index_kits_on_guid", unique: true
-    t.index ["identifier"], name: "index_kits_on_identifier", unique: true
   end
 
   create_table "kits_materials", id: false, force: :cascade do |t|

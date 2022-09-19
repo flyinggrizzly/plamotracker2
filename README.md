@@ -49,8 +49,6 @@ associations via non-database-ID anchors, to a JSON file in `cold_storage/DATE/k
 
 `bin/rails cold_storage:commit` does the same, and commits that change to git.
 
-I'm working on saving non-kit data, and rehydrating the database.
-
 ## Philosophy
 
 My intent is for installations to be disposable, but the data to be recoverable. In my case, that means I will be

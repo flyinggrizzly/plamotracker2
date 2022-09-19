@@ -1,0 +1,5 @@
+class RemoveBaseKitId < ActiveRecord::Migration[7.0]
+  def change
+    remove_column :kits, :base_kit_id, :integer
+  end
+end

@@ -34,13 +34,10 @@ class Kit < ApplicationRecord
   # Virtual attr to simplify logic of creating or not creating instances in creation form
   attr_accessor :persist_box
 
-  before_validation :set_identifier
+  before_validation :set_guid, unless: :persisted?
   before_validation :set_handle
 
   validates :name, presence: true
-  validates :identifier,
-    presence: true,
-    uniqueness: { message: "Kit must be unique in the scope of scale, producers, kit-lines, designers, and base-kit" }
   validates :handle, presence: true
 
   delegate :name, to: :kit_scale, prefix: true
@@ -66,22 +63,6 @@ class Kit < ApplicationRecord
 
   private
 
-  def set_identifier
-    # Order is important and needs to be stable. Change with care.
-    elements = [
-      [ "name", name ],
-      [ "scale", kit_scale.name ],
-      [ "designers", designers.map(&:name) ],
-      [ "producers", producers.map(&:name) ],
-      [ "kit_lines", kit_lines.map(&:slug) ],
-      [ "related_kits", kit_links.map(&:identifier) ],
-    ]
-      .reject {|_field, value| value.blank?}
-      .map {|field, value| "#{field}={#{value}}"}
-
-    self.identifier = elements.join(',')
-  end
-
   def set_handle
     elements = [
       name,
@@ -92,5 +73,11 @@ class Kit < ApplicationRecord
       .reject(&:blank?)
 
     self.handle = elements.join(' ')
+  end
+
+  def set_guid
+    return if persisted?
+
+    self.guid = "#{name.parameterize}__#{SecureRandom.uuid}"
   end
 end

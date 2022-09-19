@@ -5,15 +5,16 @@ module ColdStorage
     data = Kit.all.map do |kit|
       {
         name: kit.name,
-        identifier: kit.identifier,
+        guid: kit.guid,
         handle: kit.handle,
         notes: kit.notes,
         kit_scale: kit.kit_scale.name,
+        kit_lines: kit.kit_lines.pluck(:slug),
         designers: kit.designers.pluck(:name),
         producers: kit.producers.pluck(:name),
         materials: kit.materials.pluck(:name),
         source_materials: kit.source_materials.pluck(:slug),
-        kit_links: kit.kit_links.pluck(:identifier),
+        kit_links: kit.kit_links.pluck(:guid),
         kit_instances: kit.kit_instances.pluck(:status, :notes).map {|status, notes| { status:, notes: }},
       }
     end

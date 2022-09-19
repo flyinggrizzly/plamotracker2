@@ -65,7 +65,7 @@ class Kit < ApplicationRecord
   end
 
   def set_guid
-    return if persisted?
+    return if persisted? || self.guid.present?
 
     self.guid = "#{name.parameterize}__#{SecureRandom.uuid}"
   end

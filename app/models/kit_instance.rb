@@ -28,7 +28,7 @@ class KitInstance < ApplicationRecord
   private
 
   def set_guid
-    return if persisted?
+    return if persisted? || self.guid.present?
 
     self.guid = "#{kit_name.parameterize}--instance__#{SecureRandom.uuid}"
   end

@@ -6,6 +6,19 @@ namespace :cold_storage do
     puts "Saved all kit data to #{outpath}"
   end
 
+  desc "Loads kit data from JSON"
+  task thaw: :environment do
+    kit_counts, instance_counts = ColdStorage.thaw
+    starting_kits, starting_kit_instances = kit_counts
+    ending_kits, ending_kit_instances = instance_counts
+
+    created_kits = ending_kits - starting_kits
+    created_instances = ending_kit_instances - starting_kit_instances
+
+    puts "#{ending_kits} #{"kit".pluralize(ending_kits)} ready (created #{created_kits} #{"kit".pluralize(created_kits)})"
+    puts "#{ending_kit_instances} kit #{"box".pluralize(ending_kit_instances)} ready (created #{created_instances} kit #{"box".pluralize(created_instances)})"
+  end
+
   desc "Clean up stored kit data, keeping the latest N entries"
   task :prune, [:number_to_keep] => :environment do |task, args|
     number_to_keep = args.number_to_keep.to_i

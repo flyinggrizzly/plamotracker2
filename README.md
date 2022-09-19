@@ -11,8 +11,8 @@ An app for tracking plastic models.
 5. Optionally set up fact table seeds in database for things like `KitLine` (e.g. HGUC, MG, Volks' IMS) and
    `SourceMaterial` (things like `'gundam', 'gundam/zeta', 'mak'`) with `% bin/rails db:seed`
 6. Run the server and hit the web interface:
-  - `bin/rails server`
-  - Usually `http://localhost:3000`
+    - `bin/rails server`
+    - Usually `http://localhost:3000`
 
 ## Usage
 
@@ -43,11 +43,22 @@ Keep your database up to date with `bin/rails db:migrate`, though it's probably 
 If you run `bin/rails cold_storage:freeze`, the app will save out all your kit data, with stable references to their
 associations via non-database-ID anchors, to a JSON file in `cold_storage/DATE/kits__DATETIME.json`.
 
-`bin/rails cold_storage:prune[n]` removes all saved data, save for `n` entries.
+- `bin/rails cold_storage:prune[n]` removes all saved data, save for `n` entries.
+- `bin/rails cold_storage:update` removes all saved data and saves one new entry.
+- `bin/rails cold_storage:commit` does the same, and commits that change to git.
+- `bin/rails cold_storage:thaw` reseeds the database with non-kit data (like producers etc), and hydrates all the kit
+  data in `cold_storage` into the database. Uses guids to prevent duplication.
 
-`bin/rails cold_storage:update` removes all saved data and saves one new entry.
+#### Storing ColdStorage on Github separate from the application
 
-`bin/rails cold_storage:commit` does the same, and commits that change to git.
+I have my `./cold_storage` dir set up as a submodule in a private repo, to separate it from this public repo.
+
+To do this yourself, create a repository for yourself, for example `plamotracker-cold_storage`, and add it as a
+submodule: `% git submodule add git@github.com:GITHUB_USERNAME/plamotracker-cold_storage cold_storage` in the root of
+the project.
+
+Then running `% bin/rails cold_storage:freeze cold_storage:thaw` operates on the data in the submodule, and I can push
+and pull that to Github separtely from the app.
 
 ## Philosophy
 

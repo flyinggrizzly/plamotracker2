@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_18_203419) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_19_144808) do
   create_table "designers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -77,7 +77,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_203419) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "handle", null: false
+    t.string "guid", null: false
     t.index ["base_kit_id"], name: "index_kits_on_base_kit_id"
+    t.index ["guid"], name: "index_kits_on_guid", unique: true
     t.index ["identifier"], name: "index_kits_on_identifier", unique: true
   end
 
@@ -121,7 +123,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_18_203419) do
     t.index ["slug"], name: "index_source_materials_on_slug", unique: true
   end
 
-  add_foreign_key "kit_instances", "kits"
   add_foreign_key "kits", "kit_scales"
   add_foreign_key "kits", "kits", column: "base_kit_id"
   add_foreign_key "source_materials", "source_materials", column: "parent_source_id"

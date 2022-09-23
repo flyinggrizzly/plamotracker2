@@ -34,6 +34,7 @@ module FactTable
       "Dengeki Hobby",
       "Xiao Zhe - The Air Studio",
       "Nillson Work",
+      "Novo Aircraft Kits",
     ]
 
     def build

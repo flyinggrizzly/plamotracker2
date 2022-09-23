@@ -33,4 +33,23 @@ namespace :cold_storage do
     Rake::Task["cold_storage:prune"].invoke(0)
     Rake::Task["cold_storage:freeze"].invoke
   end
+
+  desc "Commits cold_storage submodule and updates ref"
+  task commit: :environment do
+    current_dir = Dir.getwd
+
+    Dir.chdir(ColdStorage::Fs::STORAGE_LOCATION)
+    system!('git add .')
+    system!('git commit -m "Update cold_storage"')
+    system!('git push origin HEAD:main')
+
+    Dir.chdir(current_dir)
+    system!('git add cold_storage')
+    system!('git commmit -only cold_storage -m "Update cold_storage refs"')
+    system!('git push')
+  end
+end
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
 end

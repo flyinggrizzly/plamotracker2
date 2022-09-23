@@ -17,7 +17,7 @@ module ColdStorage
     end
 
     def prune(number_to_keep)
-      folders = serialized_data_repository_path.children
+      folders = serialized_data_repository_path.children.reject {|c| c.basename.to_s == ".git"}
       frozen_entries = folders.flat_map {|folder| folder.children.map {|child| [ folder, child ]}}
 
       sorted_entries = frozen_entries.sort_by(&:second).reverse

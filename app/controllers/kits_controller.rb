@@ -4,6 +4,7 @@ class KitsController < ApplicationController
   # GET /kits or /kits.json
   def index
     @kits = Kit.all
+    @kit_instances = KitInstance.all
   end
 
   # GET /kits/1 or /kits/1.json

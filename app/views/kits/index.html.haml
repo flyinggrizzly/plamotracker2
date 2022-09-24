@@ -3,6 +3,21 @@
     %h1 Kits
 .row
   .col
+    %table.table.table-sm
+      %thead
+        %tr
+          %th Number of kits
+          %th Number of unbuilt boxes
+          %th Number of built boxes
+          %th Total number of boxes
+      %tbody
+        %tr
+          %td= @kits.count
+          %td= @kit_instances.where(status: "OWNED").count
+          %td= @kit_instances.where(status: "BUILT").count
+          %td= @kit_instances.count
+.row
+  .col
     = link_to 'Create a new kit', new_kit_path
 .row
   .col

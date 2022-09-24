@@ -19,9 +19,9 @@ namespace :cold_storage do
     puts "#{ending_kit_instances} kit #{"box".pluralize(ending_kit_instances)} ready (created #{created_instances} kit #{"box".pluralize(created_instances)})"
   end
 
-  desc "Clean up stored kit data, keeping the latest N entries"
+  desc "Clean up stored kit data, keeping the latest N entries (default keeps 1)"
   task :prune, [:number_to_keep] => :environment do |task, args|
-    number_to_keep = args.number_to_keep.to_i
+    number_to_keep = args.number_to_keep&.to_i || 1
 
     deleted, kept = ColdStorage.prune(number_to_keep)
 

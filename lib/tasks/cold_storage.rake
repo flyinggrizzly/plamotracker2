@@ -6,7 +6,7 @@ namespace :cold_storage do
     puts "Saved all kit data to #{outpath}"
   end
 
-  desc "Loads kit data from JSON"
+  desc "Loads kit data from JSON into database. Stable identifiers prevent record duplication."
   task thaw: :environment do
     kit_counts, instance_counts = ColdStorage.thaw
     starting_kits, starting_kit_instances = kit_counts

@@ -40,15 +40,23 @@
       - @kit.materials.each do |material|
         %li= link_to material.name, material_path(material)
   .col
-    %h3 Related kits
+    %h3 Linked kits
     %ul
       - @kit.kit_links.each do |rk|
         %li= link_to rk.name, kit_path(rk)
+  .col
+    %h3 Kit backlinks
+    %ul
+      - @kit.kit_back_links.each do |bk|
+        %li= link_to bk.name, kit_path(bk)
 
 .row
   .col
     %h3 Notes
-    %p= @kit.notes
+    - if @kit.notes.blank?
+      %em none
+    - else
+      %p= @kit.notes
 
 .row.mt-2
   .col

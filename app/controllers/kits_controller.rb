@@ -80,6 +80,7 @@ class KitsController < ApplicationController
         kit_line_ids: [],
         designer_ids: [],
         source_material_ids: [],
+        kit_link_ids: [],
         kit_instances_attributes: [
           :status,
           :notes,

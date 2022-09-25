@@ -39,6 +39,11 @@
     %ul
       - @kit.materials.each do |material|
         %li= link_to material.name, material_path(material)
+  .col
+    %h3 Related kits
+    %ul
+      - @kit.kit_links.each do |rk|
+        %li= link_to rk.name, kit_path(rk)
 
 .row.mt-2
   .col

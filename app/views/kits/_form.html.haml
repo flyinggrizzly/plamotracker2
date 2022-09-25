@@ -25,7 +25,7 @@
           = render('multi_select', name: "kit[material_ids][]", collection: material_options, current_value: @kit.material_ids)
 
       .row
-        .col 
+        .col
           - producer_options = Producer.all.pluck(:id, :name).map {|id, name| { value: id, label: name }}
           = f.label :producers
           = render('multi_select', name: "kit[producer_ids][]", collection: producer_options, current_value: @kit.producer_ids)
@@ -57,6 +57,9 @@
             .border.rounded.p-2
               = f.fields_for :kit_instances do |ki_f|
                 = ki_f.select :status, KitInstance::STATUSES.keys, selected: "OWNED"
+                = ki_f.label :location
+                - location_options = Location.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+                = render('multi_select', name: 'kit_instance[location_id]', current_value: nil, collection: location_options)
                 = ki_f.text_area :notes
 
       .row.mt-2

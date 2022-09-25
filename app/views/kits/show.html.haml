@@ -49,6 +49,9 @@
           .border.border-2.rounded.mx-1.p-2
             = bootstrap_form_for(ki) do |f|
               = f.select :status, KitInstance::STATUSES.keys
+              = f.label :location
+              - location_options = Location.pluck(:id, :name).map {|id, name| { value: id, label: name }}
+              = render('multi_select', name: 'kit_instance[location_id]', current_value: ki.location_id, collection: location_options)
               = f.text_area :notes
               = f.submit 'Update', class: 'btn btn-outline-primary btn-sm float-start'
             = button_to 'Destroy', ki, class: 'btn btn-sm btn-outline-danger float-end', method: :delete, data: { confirm: 'Are you sure?' }

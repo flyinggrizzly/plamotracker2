@@ -1,5 +1,6 @@
 class KitInstance < ApplicationRecord
   belongs_to :kit
+  belongs_to :location, optional: true
 
   delegate :name, to: :kit, prefix: true
 

@@ -83,6 +83,7 @@ class KitsController < ApplicationController
         kit_instances_attributes: [
           :status,
           :notes,
+          :location_id,
         ],
       )
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_19_150439) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_25_080612) do
   create_table "designers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -30,8 +30,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_150439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "guid"
+    t.integer "location_id"
     t.index ["guid"], name: "index_kit_instances_on_guid", unique: true
     t.index ["kit_id"], name: "index_kit_instances_on_kit_id"
+    t.index ["location_id"], name: "index_kit_instances_on_location_id"
   end
 
   create_table "kit_lines", force: :cascade do |t|
@@ -94,6 +96,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_19_150439) do
   create_table "kits_source_materials", id: false, force: :cascade do |t|
     t.integer "kit_id", null: false
     t.integer "source_material_id", null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "slug", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_locations_on_name", unique: true
+    t.index ["slug"], name: "index_locations_on_slug", unique: true
   end
 
   create_table "materials", force: :cascade do |t|

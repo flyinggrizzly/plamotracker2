@@ -2,7 +2,8 @@ class KitInstance < ApplicationRecord
   belongs_to :kit
   belongs_to :location, optional: true
 
-  delegate :name, to: :kit, prefix: true
+  delegate :name, :guid, to: :kit, prefix: true
+  delegate :name, :slug, to: :location, prefix: true, allow_nil: true
 
   STATUSES = {
     NEEDED: 0,

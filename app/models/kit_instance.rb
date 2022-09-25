@@ -6,6 +6,8 @@ class KitInstance < ApplicationRecord
   STATUSES = {
     NEEDED: 0,
     DESIRED: 1,
+    PURCHASED: 98,
+    BEING_DELIVERED: 99,
     OWNED: 100, # default
     BUILT: 200,
     PARTED_OUT: 250,

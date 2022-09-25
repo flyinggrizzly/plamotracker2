@@ -79,6 +79,7 @@ module FactTable
       { name: "Rogue One",                        base_slug: "rogue_one",               parent_source_slug: "star_wars" },
       { name: "UC MSV",                           base_slug: "msv",                     parent_source_slug: "gundam/uc" },
       { name: "Cold War",                         base_slug: "cold_war",                parent_source_slug: "historical" },
+      { name: "War in the Pocket",                base_slug: "witp",                    parent_source_slug: "gundam" },
     ].freeze
 
     def build

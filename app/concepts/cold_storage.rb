@@ -2,6 +2,13 @@ module ColdStorage
   extend(self)
 
   def freeze
+    location_data = Location.all.map do |location|
+      {
+        name: location.name,
+        slug: location.slug,
+      }
+    end
+
     kit_data = Kit.all.map do |kit|
       {
         name: kit.name,
@@ -20,13 +27,14 @@ module ColdStorage
 
     kit_instance_data = KitInstance.all.map do |ki|
       {
-        kit: ki.kit.guid,
+        kit: ki.kit_guid,
         status: ki.status,
-        notes: ki.notes
+        notes: ki.notes,
+        location: ki.location_slug,
       }
     end
 
-    data = { kits: kit_data, kit_instances: kit_instance_data }
+    data = { kits: kit_data, kit_instances: kit_instance_data, locations: location_data }
 
     Fs.write('kits', data)
   end
@@ -35,10 +43,17 @@ module ColdStorage
     FactTable.seed_all
 
     data = Fs.read_latest('kits')
+    location_data = data.fetch(:locations)
     kit_data = data.fetch(:kits).sort_by {|kit| kit.fetch(:kit_links).size }
     kit_instance_data = data.fetch(:kit_instances)
 
-    starting_counts = [ Kit.count, KitInstance.count ]
+    starting_counts = [ Kit.count, KitInstance.count, Location.count ]
+
+    location_data.each do |loc_datum|
+      loc_datum => { name:, slug: }
+
+      Location.create(name:, slug:)
+    end
 
     kit_data.each do |kit_datum|
       kit_datum => {
@@ -86,18 +101,21 @@ module ColdStorage
         kit: kit_guid,
         status:,
         notes:,
+        location: location_slug,
       }
 
       kit = Kit.find_by(guid: kit_guid)
+      location = Location.find_by(slug: location_slug)
 
       KitInstance.find_or_create_by(
         kit:,
         status:,
-        notes:
+        notes:,
+        location:
       )
     end
 
-    ending_counts = [ Kit.count, KitInstance.count ]
+    ending_counts = [ Kit.count, KitInstance.count, Location.count ]
 
     [ starting_counts, ending_counts ]
   end

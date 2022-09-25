@@ -35,6 +35,7 @@ module FactTable
       "Xiao Zhe - The Air Studio",
       "Nillson Work",
       "Novo Aircraft Kits",
+      "SJL Model",
     ]
 
     def build

@@ -45,7 +45,7 @@ namespace :cold_storage do
 
     Dir.chdir(current_dir)
     system!('git add cold_storage')
-    system!('git commmit -only cold_storage -m "Update cold_storage refs"')
+    system!('git commit -only cold_storage -m "Update cold_storage refs"')
     system!('git push')
   end
 end

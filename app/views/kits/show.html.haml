@@ -45,6 +45,11 @@
       - @kit.kit_links.each do |rk|
         %li= link_to rk.name, kit_path(rk)
 
+.row
+  .col
+    %h3 Notes
+    %p= @kit.notes
+
 .row.mt-2
   .col
     %h3 Copies of this kit

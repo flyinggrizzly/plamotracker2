@@ -72,6 +72,7 @@ class KitsController < ApplicationController
       .permit(
         :name,
         :status,
+        :notes,
         :quantity,
         :kit_scale_id,
         :persist_box,

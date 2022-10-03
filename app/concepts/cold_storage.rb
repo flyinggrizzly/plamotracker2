@@ -13,7 +13,6 @@ module ColdStorage
       {
         name: kit.name,
         guid: kit.guid,
-        handle: kit.handle,
         notes: kit.notes,
         kit_scale: kit.kit_scale.name,
         kit_lines: kit.kit_lines.pluck(:slug),
@@ -59,7 +58,6 @@ module ColdStorage
       kit_datum => {
         name:,
         guid:,
-        handle:,
         notes:,
         kit_scale: kit_scale_name,
         kit_lines: kit_line_slugs,
@@ -71,6 +69,7 @@ module ColdStorage
       }
 
       kit_scale = KitScale.find_by(name: kit_scale_name)
+      kit_scale_id = kit_scale.id
       kit_lines = KitLine.where(slug: kit_line_slugs)
       designers = Designer.where(name: designer_names)
       producers = Producer.where(name: producer_names)
@@ -78,12 +77,11 @@ module ColdStorage
       source_materials = SourceMaterial.where(slug: source_material_slugs)
       kit_links = Kit.where(guid: kit_link_guids)
 
-      kit = Kit.find_or_create_by(
+      kit = Kit.find_or_initialize_by(
         name:,
         guid:,
-        handle:,
         notes:,
-        kit_scale:
+        kit_scale_id:,
       )
 
       kit.kit_lines = kit_lines
@@ -94,6 +92,8 @@ module ColdStorage
       kit.kit_links = kit_links
 
       kit.save!
+    rescue ActiveRecord::RecordNotUnique => e
+      binding.pry
     end
 
     kit_instance_data.each do |instance|

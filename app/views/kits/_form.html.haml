@@ -16,7 +16,7 @@
           = render('multi_select', name: "kit[kit_scale_id]", current_value: @kit.kit_scale_id, collection: kit_scale_options)
       .row
         .col
-          - related_kit_options = Kit.pluck(:id, :handle).map {|id, handle| { value: id, label: handle }}
+          - related_kit_options = Kit.all.map {|k| { value: k.id, label: k.handle }}
           = f.label :related_kits
           = render('multi_select', name: "kit[kit_link_ids][]", current_value: @kit.kit_link_ids, collection: related_kit_options)
         .col

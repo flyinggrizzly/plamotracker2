@@ -26,10 +26,8 @@ class Kit < ApplicationRecord
   attr_accessor :persist_box
 
   before_validation :set_guid, unless: :persisted?
-  before_validation :set_handle
 
   validates :name, presence: true
-  validates :handle, presence: true
 
   delegate :name, to: :kit_scale, prefix: true
   alias_method :scale_name, :kit_scale_name
@@ -50,19 +48,19 @@ class Kit < ApplicationRecord
     kit_instances.count
   end
 
-  private
-
-  def set_handle
+  def handle
     elements = [
       name,
-      kit_scale.name,
+      kit_scale_name,
       kit_lines.map(&:nickname).then {|arr| arr.empty? ? nil : "[#{arr.join(', ')}]"},
       producers.pluck(:name).then {|arr| arr.empty? ? nil : "[#{arr.join(', ')}]"},
     ]
       .reject(&:blank?)
 
-    self.handle = elements.join(' ')
+    elements.join(' ')
   end
+
+  private
 
   def set_guid
     return if persisted? || self.guid.present?

@@ -36,6 +36,7 @@ module FactTable
       "Nillson Work",
       "Novo Aircraft Kits",
       "SJL Model",
+      "Garage Heavy Industry",
     ]
 
     def build

@@ -32,6 +32,7 @@ module FactTable
       "Shinkawa Yoji",
       "Gyoubu Ippei",
       "Nillson Work",
+      "Killo",
     ]
 
     def build

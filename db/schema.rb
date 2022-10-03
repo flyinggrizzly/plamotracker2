@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_25_080612) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_03_180608) do
   create_table "designers", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -78,7 +78,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_25_080612) do
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "handle", null: false
     t.string "guid", null: false
     t.index ["guid"], name: "index_kits_on_guid", unique: true
   end

@@ -33,6 +33,7 @@ module FactTable
       "Gyoubu Ippei",
       "Nillson Work",
       "Killo",
+      "Makoto Models",
     ]
 
     def build

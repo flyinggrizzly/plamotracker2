@@ -37,6 +37,10 @@ module FactTable
       "Novo Aircraft Kits",
       "SJL Model",
       "Garage Heavy Industry",
+      "Makoto Models",
+      "Honemits",
+      "Andrea Miniatures",
+      "Life Miniatures",
     ]
 
     def build

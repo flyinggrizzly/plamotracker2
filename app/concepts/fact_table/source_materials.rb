@@ -7,6 +7,7 @@ module FactTable
       { name: "Gundam",                           base_slug: "gundam",                  parent_source_slug: nil },
       { name: "Star Wars",                        base_slug: "star_wars",               parent_source_slug: nil },
       { name: "Attack of the Clones",             base_slug: "clones",                  parent_source_slug: "star_wars" },
+      { name: "Empire Strikes Back",              base_slug: "empire",                  parent_source_slug: "star_wars" },
       { name: "Missing Link",                     base_slug: "missing_link",            parent_source_slug: "gundam" },
       { name: "Code Fairy",                       base_slug: "code_fairy",              parent_source_slug: "gundam" },
       { name: "0083 Stardust Memory",             base_slug: "0083",                    parent_source_slug: "gundam" },
@@ -80,6 +81,11 @@ module FactTable
       { name: "UC MSV",                           base_slug: "msv",                     parent_source_slug: "gundam/uc" },
       { name: "Cold War",                         base_slug: "cold_war",                parent_source_slug: "historical" },
       { name: "War in the Pocket",                base_slug: "witp",                    parent_source_slug: "gundam" },
+      { name: "Hathaway's Flash",                 base_slug: "hathaway",                parent_source_slug: "gundam" },
+      { name: "Witch from Mercury",               base_slug: "g_witch",                 parent_source_slug: "gundam" },
+      { name: "Super Robot Wars",                 base_slug: "srw",                     parent_source_slug: nil },
+      { name: "Super Robot Wars OG",              base_slug: "og",                      parent_source_slug: "srw" },
+      { name: "Super Dimension Fortress Macross", base_slug: "macross",                 parent_source_slug: nil },
     ].freeze
 
     def build

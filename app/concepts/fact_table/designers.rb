@@ -34,6 +34,9 @@ module FactTable
       "Nillson Work",
       "Killo",
       "Makoto Models",
+      "Yokoyama Kow",
+      "Watanabe MAX",
+      "Kawamori Shoji",
     ]
 
     def build

@@ -23,7 +23,7 @@ module FactTable
       "Side3 The 51",
       "Square Enix Structure Arts",
       "Stickler Studio",
-      "Unknown Volks Recast",
+      "Elfin (Korean recaster c. 1992-1998)",
       "Utopia Cast",
       "Volks",
       "Wave",

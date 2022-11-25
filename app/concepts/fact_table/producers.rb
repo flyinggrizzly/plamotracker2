@@ -41,6 +41,7 @@ module FactTable
       "Honemits",
       "Andrea Miniatures",
       "Life Miniatures",
+      "Atelier Sai",
     ]
 
     def build

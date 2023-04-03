@@ -3,8 +3,10 @@ class KitsController < ApplicationController
 
   # GET /kits or /kits.json
   def index
-    @kits = Kit.all
-    @kit_instances = KitInstance.all
+    statuses = KitInstance::Status.normalize(params.fetch(:status, ''))
+
+    @kit_instances = KitInstance.by_status(statuses)
+    @kits = Kit.where(kit_instances: @kit_instances)
   end
 
   # GET /kits/1 or /kits/1.json

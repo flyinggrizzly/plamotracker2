@@ -6,16 +6,22 @@
     %table.table.table-sm
       %thead
         %tr
-          %th Number of kits
-          %th Number of unbuilt boxes
-          %th Number of built boxes
-          %th Total number of boxes
+          %th INCOMING
+          %th UNBUILT
+          %th FINISHED
+          %th Total
       %tbody
         %tr
-          %td= @kits.count
-          %td= @kit_instances.where(status: "OWNED").count
-          %td= @kit_instances.where(status: "BUILT").count
-          %td= @kit_instances.count
+          %td
+            - pending = KitInstance::Status::PENDING_DELIVERY
+            = link_to KitInstance.where(status: pending).count, kits_path(status: pending)
+          %td
+            - owned = KitInstance::Status::OWNED
+            = link_to KitInstance.where(status: owned).count, kits_path(status: owned)
+          %td
+            - built = KitInstance::Status::BUILT
+            = link_to KitInstance.where(status: built).count, kits_path(status: built)
+          %td= link_to KitInstance.count, kits_path
 .row
   .col
     = link_to 'Create a new kit', new_kit_path

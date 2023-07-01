@@ -4,6 +4,13 @@ module FactTable
     extend(Table)
 
     DATA = [
+      { name: "Miyazaki Sketches",                base_slug: "miyazaki_sketches",       parent_source_slug: nil },
+      { name: "Nichijou",                         base_slug: "nichijou",                parent_source_slug: nil },
+      { name: "POWERDolls 2",                     base_slug: "powerdolls2",             parent_source_slug: nil },
+      { name: "Detective Conan",                  base_slug: "detective_conan",         parent_source_slug: nil },
+      { name: "The Big O",                        base_slug: "big_o",                   parent_source_slug: nil },
+      { name: "Kamen Rider",                      base_slug: "kamen_rider",             parent_source_slug: nil },
+      { name: "Kamen Rider Kuuga",                base_slug: "kuuga",                   parent_source_slug: "kamen_rider" },
       { name: "Gundam",                           base_slug: "gundam",                  parent_source_slug: nil },
       { name: "Star Wars",                        base_slug: "star_wars",               parent_source_slug: nil },
       { name: "Attack of the Clones",             base_slug: "clones",                  parent_source_slug: "star_wars" },
@@ -86,6 +93,10 @@ module FactTable
       { name: "Super Robot Wars",                 base_slug: "srw",                     parent_source_slug: nil },
       { name: "Super Robot Wars OG",              base_slug: "og",                      parent_source_slug: "srw" },
       { name: "Super Dimension Fortress Macross", base_slug: "macross",                 parent_source_slug: nil },
+      { name: "Gundam AGE",                       base_slug: "age",                     parent_source_slug: "gundam" },
+      { name: "Keep Your Hands Off Eizouken!",    base_slug: "eizouken",                parent_source_slug: nil },
+      { name: "Warhammer",                        base_slug: "warhammer",               parent_source_slug: nil },
+      { name: "Warhammer 40k",                    base_slug: "40k",                     parent_source_slug: "warhammer" },
     ].freeze
 
     def build

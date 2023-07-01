@@ -37,6 +37,15 @@ module FactTable
       "Yokoyama Kow",
       "Watanabe MAX",
       "Kawamori Shoji",
+      "Yoshikazu Yasujiko",
+      "Miyazaki Hayao",
+      "Ohishi Hiroshi",
+      "KILLO",
+      "Witching Hour",
+      "Molding Mule",
+      "Tap and Dice (tap-and-dice.biz)",
+      "Roppongi Hiroshi",
+      "Big Child Creatives",
     ]
 
     def build

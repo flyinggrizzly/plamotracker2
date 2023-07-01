@@ -4,6 +4,9 @@ module FactTable
     extend(Table)
 
     NAMES = [
+      "Eduard",
+      "Rainbow Egg",
+      "Model Izakaya",
       "Amazing Cast",
       "B-Club",
       "Bandai",
@@ -42,6 +45,18 @@ module FactTable
       "Andrea Miniatures",
       "Life Miniatures",
       "Atelier Sai",
+      "Nitto",
+      "Aoshima",
+      "Platz",
+      "Effect Wings",
+      "Keiko Models",
+      "Witching Hour",
+      "Games Workshop",
+      "B&K Models",
+      "Molding Mule",
+      "Tap and Dice (tap-and-dice.biz)",
+      "Roppongi Hiroshi",
+      "Big Child Creatives",
     ]
 
     def build
